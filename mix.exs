@@ -42,9 +42,15 @@ defmodule PlacesApi.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:credo, "~> 1.5.5", only: [:dev, :test], runtime: false},
+      {:bcrypt_elixir, "~> 2.3.0"},
+      {:cors_plug, "~> 2.0"}
     ]
   end
+
+  #command for bcrypt to work on windows:
+  # cmd /K "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\Common7\Tools\vsdevcmd" -arch=x64
 
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, to install project dependencies and perform other setup tasks, run:

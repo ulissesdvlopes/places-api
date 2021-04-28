@@ -16,6 +16,9 @@ defmodule PlacesApiWeb.Endpoint do
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
+
+  plug CORSPlug, origin: ["http://localhost:3000"]
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
