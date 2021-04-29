@@ -14,6 +14,13 @@ defmodule PlacesApiWeb.FallbackController do
     |> render("error.json", changeset: changeset)
   end
 
+  def call(conn, {:error, %{message: message}}) do
+    conn
+    |> put_status(:bad_request)
+    |> put_view(PlacesApiWeb.ErrorView)
+    |> render("error.json", message: message)
+  end
+
   # This clause is an example of how to handle resources that cannot be found.
   def call(conn, {:error, :not_found}) do
     conn

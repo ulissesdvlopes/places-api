@@ -12,13 +12,22 @@ defmodule PlacesApiWeb.UserController do
   end
 
   def create(conn, params) do
-    user_params = %{user: params}
     with {:ok, %User{} = user} <- Accounts.create_user(params) do
       conn
       |> put_status(:created)
       |> put_resp_header("location", Routes.user_path(conn, :show, user))
       |> render("show.json", user: user)
     end
+  end
+
+  def auth(conn, %{"username" => username, "password" => password}) do
+    user = Accounts.get_user_by_username(username)
+
+    case Bcrypt.check_pass(user, password) do
+      {:ok, user} -> render(conn, "show.json", user: user)
+      {:error, reason} -> {:error, %{message: reason}}
+    end
+
   end
 
   def show(conn, %{"id" => id}) do
