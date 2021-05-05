@@ -10,6 +10,7 @@ defmodule PlacesApiWeb.Router do
 
     resources "/users", UserController, except: [:new, :edit]
     post "/auth", UserController, :auth
+    resources "/places", PlaceController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

@@ -11,6 +11,7 @@ defmodule PlacesApi.Accounts.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :username, :string
+    has_many :places, PlacesApi.Places.Place, foreign_key: :owner_id
 
     timestamps()
   end
