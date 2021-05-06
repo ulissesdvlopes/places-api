@@ -11,7 +11,6 @@ defmodule PlacesApiWeb.PlaceView do
   end
 
   def render("place.json", %{place: place}) do
-    IO.inspect(place)
     %{id: place.id,
       name: place.name,
       private: place.private,

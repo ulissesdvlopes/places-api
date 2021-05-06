@@ -3,6 +3,7 @@ defmodule PlacesApiWeb.UserSocket do
 
   ## Channels
   # channel "room:*", PlacesApiWeb.RoomChannel
+  channel "place:*", PlacesApiWeb.PlaceChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
